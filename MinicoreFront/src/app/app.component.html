@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row fila-datos gy-5">
+    <div class="col">
+      <h2>Clientes</h2>
+      <div class="contenedor">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cliente of listClientes ; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{cliente.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Contratos</h2>
+      <div class="contenedor">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">monto</th>
+              <th scope="col">fecha</th>
+              <th scope="col">Cliente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contrato of listContratos ; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{contrato.nombre}}</td>
+              <td>{{contrato.monto}}</td>
+              <td>{{contrato.fecha}}</td>
+              <td>{{contrato.cliente}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h2>Cliente monto total</h2>
+    <div class="col">
+      <form
+        (ngSubmit)="enviarDatos()"
+        [formGroup]="fechasForm"
+      >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Fecha inicio</label>
+          <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="fechaIni">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Fecha fin</label>
+          <input type="date" class="form-control" id="exampleInputPassword1"
+          formControlName="fechaFIn">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col">
+      <div class="contenedor">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre cliente</th>
+              <th scope="col">monto total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contrato of listacore ; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{contrato.name}}</td>
+              <td>{{contrato.montoTotal}}</td>
+
+            </tr>
+          </tbody>
+          <tfoot>
+            <th>total</th>
+            <th></th>
+            <th>{{total}}</th>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
